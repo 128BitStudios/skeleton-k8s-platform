@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-api
+  namespace: apis
+  labels:
+    app: test-api
+    version: latest
+spec:
+  selector:
+    matchLabels:
+      app: test-api
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: test-api
+      labels:
+        app: test-api
+        version: latest
+    spec:
+      nodeSelector:
+        beta.kubernetes.io/os: linux
+        beta.kubernetes.io/arch: amd64
+      containers:
+      - name: test-api
+        image: k8s.gcr.io/echoserver:1.4
+        imagePullPolicy: Always
+        readinessProbe:
+          httpGet:
+            path: /test-api
+            port: 8080
+        livenessProbe:
+          httpGet:
+            path: /test-api
+            port: 8080
+          periodSeconds: 30
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: test-api
