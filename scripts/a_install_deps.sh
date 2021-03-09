@@ -9,5 +9,8 @@
 # Install kubectl
 # todo: for now install kubectl using docs https://v1-18.docs.kubernetes.io/docs/tasks/tools/install-kubectl
 
+# Install linkerd
+# todo: for now install linkerd using docs https://linkerd.io/2/getting-started/
+
 # Install minikube (local only for testing)
 # todo: for now install minikube using docs https://minikube.sigs.k8s.io/docs/start

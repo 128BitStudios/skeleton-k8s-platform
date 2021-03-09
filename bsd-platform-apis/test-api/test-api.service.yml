@@ -7,8 +7,8 @@ spec:
   selector:
     app: test-api
   ports:
-  - name: http
-    port: 5100
-    targetPort: 8080
-    protocol: TCP
-  type: LoadBalancer
+    - name: http
+      port: 5100
+      targetPort: 8080
+      protocol: TCP
+  type: ClusterIP
