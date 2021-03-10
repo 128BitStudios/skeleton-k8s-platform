@@ -4,4 +4,3 @@
 /bin/bash ./a_install_deps.sh
 /bin/bash ./b_init.sh
 /bin/bash ./c_create.sh
-/bin/bash ./d_certs.sh

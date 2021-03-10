@@ -1,0 +1,27 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: test-app
+  namespace: apps
+spec:
+  gateways:
+  - bsd-apps-gateway
+  hosts:
+  - apps.bradio.io
+  http:
+  - match:
+    - uri:
+        prefix: /test-app
+    route:
+    - destination:
+        host: test-app
+        port:
+          number: 80
+    headers:
+      response:
+        remove:
+        - x-envoy-upstream-service-time
+        add:
+          Strict-Transport-Security: "max-age=31536000; includeSubDomains"
+          X-Permitted-Cross-Domain-Policies: "none"
+          Expect-CT: "max-age=86400, enforce"

@@ -15,8 +15,6 @@ spec:
   template:
     metadata:
       name: test-app
-      annotations:
-        linkerd.io/inject: enabled
       labels:
         app: test-app
         version: latest
@@ -25,27 +23,21 @@ spec:
         beta.kubernetes.io/os: linux
         beta.kubernetes.io/arch: amd64
       containers:
-        - name: test-app
-          image: k8s.gcr.io/echoserver:1.4
-          imagePullPolicy: Always
-          resources:
-            requests:
-              memory: 192Mi
-              cpu: 10m
-            limits:
-              memory: 256Mi
-              cpu: 400m
-          readinessProbe:
-            httpGet:
-              path: /test-app
-              port: 8080
-          livenessProbe:
-            httpGet:
-              path: /test-app
-              port: 8080
-            periodSeconds: 30
-          ports:
-            - containerPort: 8080
-          envFrom:
-            - configMapRef:
-                name: test-app
+      - name: test-app
+        image: k8s.gcr.io/echoserver:1.4
+        imagePullPolicy: Always
+        readinessProbe:
+          httpGet:
+            path: /test-app
+            port: 8080
+        livenessProbe:
+          httpGet:
+            path: /test-app
+            port: 8080
+          periodSeconds: 30
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: test-app
+            
