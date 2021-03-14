@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
 # Create namespaces
+kubectl create namespace ingress-nginx
 kubectl create namespace apis
 kubectl create namespace apps
+
+# Install nginx-ingress manifest
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.44.0/deploy/static/provider/do/deploy.yaml
 
 # Install Linkerd
 linkerd install | kubectl apply -f -

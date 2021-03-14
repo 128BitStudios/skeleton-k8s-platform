@@ -3,15 +3,15 @@ kind: Ingress
 metadata:
   name: apis-ingress
   namespace: apis
-  annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  # annotations:
+  #   cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
-  tls:
-    - hosts:
-        - apis.yourdomain.io
-      secretName: apis-tls
+  # tls:
+  #   - hosts:
+  #       - apis.yourdomain.io
+  #     secretName: apis-tls
   rules:
-    - host: apis.yourdomain.io
+    - host: apis.bradbird.co.uk
       http:
         paths:
           - path: /test-api

@@ -3,15 +3,15 @@ kind: Ingress
 metadata:
   name: apps-ingress
   namespace: apps
-  annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  # annotations:
+  #   cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
-  tls:
-    - hosts:
-        - apps.yourdomain.io
-      secretName: apps-tls
+  # tls:
+  #   - hosts:
+  #       - apps.yourdomain.io
+  #     secretName: apps-tls
   rules:
-    - host: apps.yourdomain.io
+    - host: apps.bradbird.co.uk
       http:
         paths:
           - path: /test-app
