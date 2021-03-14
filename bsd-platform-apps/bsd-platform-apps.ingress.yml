@@ -11,7 +11,7 @@ spec:
   #       - apps.yourdomain.io
   #     secretName: apps-tls
   rules:
-    - host: apps.bradbird.co.uk
+    - host: apps.yourdomain.co.uk
       http:
         paths:
           - path: /test-app
